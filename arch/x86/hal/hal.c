@@ -164,11 +164,11 @@ int wrmsr_safe(u32 msr, u64 val)
     __asm__ goto(
         "1: wrmsr\n"
         "   jmp %l[ok]\n"
-        ".pushsection .fixup,"ax"\n"
+        ".pushsection .fixup,\"ax\"\n"
         "2: movl $-14, %0\n"          /* -EFAULT = -14 */
         "   jmp %l[fault]\n"
         ".popsection\n"
-        ".pushsection __ex_table,"a"\n"
+        ".pushsection __ex_table,\"a\"\n"
         "   .balign 4\n"
         "   .long 1b - .\n"           /* insn offset */
         "   .long 2b - .\n"           /* fixup offset */
