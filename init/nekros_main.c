@@ -164,6 +164,7 @@ static void compute_machine_fp(u8 fp[32])
 
 /* ── VFS init stub (full VFS in fs/) ────────────────────────── */
 extern void vfs_init(void);
+extern void syscall_init(void);
 
 /* ── Init process entry ──────────────────────────────────── */
 static void init_process(void *arg)
