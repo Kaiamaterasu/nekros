@@ -10,6 +10,10 @@
 #define NERI_IPC_CLASS_MIXED    2
 #define NERI_IPC_CLASS_IDLE     3
 
+/* RAPL unit bounds */
+#define UTB_MIN_RAPL_UNIT_MW 100
+#define UTB_MAX_RAPL_UNIT_MW 100000
+
 typedef struct {
     u64  pkg_power_mw;          /* current package power */
     u64  pp0_power_mw;          /* core power */
