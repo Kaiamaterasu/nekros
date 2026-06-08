@@ -71,12 +71,11 @@ static int copy_from_user(void *kdst, u64 uptr, size_t len) {
 }
 
 /* Safe copy to user address — returns -EFAULT on bad ptr */
-static int copy_to_user(u64 uptr, const void *ksrc, size_t len) {
+static int __attribute__((unused)) copy_to_user(u64 uptr, const void *ksrc, size_t len) {
     if (!uptr_valid(uptr, len)) return -EFAULT;
     memcpy((void *)uptr, ksrc, len);
     return 0;
 }
-
 
 typedef u64 (*syscall_fn)(u64, u64, u64, u64, u64, u64);
 
