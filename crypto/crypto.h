@@ -58,6 +58,9 @@ typedef struct {
     u32  _pad;
 } coc_link_t;
 
+/* Chain of Custody source IDs */
+#define COC_SRC_SYSCALL 0
+
 void coc_init(void);
 void coc_record(u32 source_id, const u8 *data, size_t len, coc_link_t *out);
 void coc_verify_chain(void);
