@@ -156,6 +156,8 @@ void vmm_free(void *ptr, u64 pages)
 #define SLAB_SIZES  8
 static const u32 slab_sz[] = { 16, 32, 64, 128, 256, 512, 1024, 2048 };
 #define SLAB_MAX_CACHE 2048
+#define SLAB_POISON       0xDEAD6DEAD6DEAD6DULL
+#define SLAB_LARGE_COOKIE 0xFF
 
 struct slab_hdr {
     struct slab_hdr *next;
@@ -294,8 +296,6 @@ bool kstack_canary_check(virt_addr_t stack_bottom)
  * We store the slab index (0-7, or 0xFF for large) in a hidden 8-byte
  * cookie immediately before the returned pointer.
  */
-#define SLAB_POISON       0xDEAD6DEAD6DEAD6DULL
-#define SLAB_LARGE_COOKIE 0xFF
 
 void kfree(void *ptr)
 {
