@@ -124,20 +124,17 @@ static void utb_sanitize_snapshot(neri_utb_snapshot_t *s)
     /* Power readings: clamp to physical maxima.
      * A value above ceiling is a firmware error or poisoned input. */
     if (s->pkg_power_mw  > UTB_MAX_PKG_POWER_MW)  {
-        pr_warn("neri-utb: pkg_power_mw=%llu out of range — clamped
-",
+        pr_warn("neri-utb: pkg_power_mw=%llu out of range — clamped\n",
                 s->pkg_power_mw);
         s->pkg_power_mw = UTB_MAX_PKG_POWER_MW;
     }
     if (s->dram_power_mw > UTB_MAX_DRAM_POWER_MW) {
-        pr_warn("neri-utb: dram_power_mw=%llu out of range — clamped
-",
+        pr_warn("neri-utb: dram_power_mw=%llu out of range — clamped\n",
                 s->dram_power_mw);
         s->dram_power_mw = UTB_MAX_DRAM_POWER_MW;
     }
     if (s->pp0_power_mw  > UTB_MAX_PP0_POWER_MW)  {
-        pr_warn("neri-utb: pp0_power_mw=%llu out of range — clamped
-",
+        pr_warn("neri-utb: pp0_power_mw=%llu out of range — clamped\n",
                 s->pp0_power_mw);
         s->pp0_power_mw = UTB_MAX_PP0_POWER_MW;
     }
@@ -155,9 +152,7 @@ static void utb_sanitize_snapshot(neri_utb_snapshot_t *s)
             s->ipc_class[i] = NERI_IPC_CLASS_IDLE;
             s->aperf[i] = 0;
         } else if (s->aperf[i] > s->mperf[i]) {
-            pr_warn("neri-utb: CPU%u aperf(%llu) > mperf(%llu) — "
-                    "clamping to mperf
-", i, s->aperf[i], s->mperf[i]);
+            pr_warn("neri-utb: CPU%u aperf(%llu) > mperf(%llu) — clamping to mperf\n", i, s->aperf[i], s->mperf[i]);
             s->aperf[i] = s->mperf[i];  /* ratio → exactly 1.0 (COMPUTE) */
         }
     }
@@ -171,9 +166,7 @@ static void utb_sanitize_snapshot(neri_utb_snapshot_t *s)
             cls != NERI_IPC_CLASS_COMPUTE &&
             cls != NERI_IPC_CLASS_MEMORY  &&
             cls != NERI_IPC_CLASS_MIXED) {
-            pr_warn("neri-utb: CPU%u unknown ipc_class=0x%x — "
-                    "defaulting to IDLE
-", i, cls);
+            pr_warn("neri-utb: CPU%u unknown ipc_class=0x%x — defaulting to IDLE\n", i, cls);
             s->ipc_class[i] = NERI_IPC_CLASS_IDLE;
         }
     }
