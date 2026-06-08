@@ -38,6 +38,7 @@
 #include <nekros/types.h>
 #include <nekros/printk.h>
 #include <nekros/string.h>
+#include "../../crypto/crypto.h"
 #include "../../../drivers/neri/include/neri.h"
 #include "../../../drivers/neri/include/neri_sec.h"
 #include "../../../mm/vmm.h"
