@@ -114,8 +114,6 @@ int neri_utb_init(void)
 #define UTB_MAX_PP0_POWER_MW   280000ULL  /* CPU die ≤ pkg              */
 #define UTB_MAX_APERF          0xFFFFFFFFFFFFFFFFULL  /* full 64-bit OK  */
 #define UTB_MAX_MPERF          0xFFFFFFFFFFFFFFFFULL
-#define UTB_MIN_RAPL_UNIT_MW   1ULL       /* at least 1 mJ/unit         */
-#define UTB_MAX_RAPL_UNIT_MW   1000ULL    /* at most 1 J/unit           */
 #define UTB_HFI_PERF_MAX       255        /* u8 field, always ≤ 255     */
 #define UTB_HFI_EFF_MAX        255
 
